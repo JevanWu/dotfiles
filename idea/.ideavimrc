@@ -1,0 +1,126 @@
+set hlsearch
+set visualbell
+set easymotion
+
+let mapleader = " "
+
+" nnoremap <silent> <leader>w :w<CR>
+" map <leader>w :action AceAction<CR>
+nmap <leader> <Plug>(easymotion-prefix)
+nnoremap <silent> <leader>q :q<CR>
+nnoremap <silent> <leader>A v$h
+nnoremap <silent> <leader>I v^
+nnoremap <silent> e $
+
+" 去掉highlight显示
+nnoremap <silent> <leader>d :nohlsearch<CR>
+
+" ============ 窗口相关 ============
+" 设置窗口跳转
+noremap <silent> <C-H> <C-W>h
+noremap <silent> <C-L> <C-W>l
+
+" ideavim支持调用idea intellj原生的action.
+" 在这里 https://anotepad.com/notes/7g8gn4 列出了可以使用的actionlist
+" 也可以通过在 ideavim 中调用 `:actionlist` 查看所有支持的action
+" 下面的所有的配置都依赖于idea本身的actionlist. 通过原生的配置, 可以使得
+" 原有的vim配置习惯保持不变.
+
+" 打开当前文件所在的目录
+noremap <C-t> :action ActivateProjectToolWindow<CR>
+" 关闭(close)其他的窗口 只剩下vim编辑区域
+"
+noremap <leader>t :action HideAllWindows<CR>
+" ============ 窗口相关 ============
+
+" ============ 查找相关 ============
+" 搜索任意文件
+nmap <C-p> :action GotoFile<CR>
+" 查找最近打开的文件
+nnoremap <C-b> :action RecentFiles<CR>
+" 查找方法定义, 这个也用了`]`, 和vim保持一致
+nnoremap <C-]> :action GotoDeclaration<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap glc :action JumpToLastChange<CR>
+" 查找java的klass
+nnoremap gk :action GotoClass<CR>
+" 查找类对应的test
+nnoremap gt :action GotoTest<CR>
+
+nnoremap <C-f> :action FindInPath<CR>
+vnoremap <C-f> :action FindUsages<CR>
+" ============ 查找相关 ============
+
+" 查看当前文件的所有方法, class等结构信息
+nnoremap ss :action ActivateStructureToolWindow<CR>
+
+" ============ 跳转相关 ============
+" 跳转到前一个地方, vim的 <C-O>
+nnoremap <C-o> :action Back<CR>
+" 跳转到后一个地方, vim的 <C-I>
+nnoremap <C-i> :action Forward<CR>
+" ============ 跳转相关 ============
+
+" ============ 编译, 运行相关 ============
+" nnoremap <leader>r :action RunClass<CR>
+" nnoremap <C-r> :action Debug<CR>
+nnoremap <leader>r :action DebugClass<CR>
+nnoremap <leader>lb :action ToggleLineBreakpoint<CR>
+nnoremap <leader>mb :action ToggleMethodBreakpoint<CR>
+" ============ 编译, 运行, debug相关 ============
+
+" ============ 拷贝路径 ============
+nnoremap <leader>' :action CopyPaths<CR>
+nnoremap <leader>; :action CopyReference<CR>
+" ============ 拷贝路径 ============
+
+" 移动并修改当前文件
+nnoremap <leader>m :action RenameFile<CR>
+" 创建新的元素
+nnoremap <leader>n :action NewElement<CR>
+" 查看javadoc
+nnoremap <leader>d :action QuickJavaDoc<CR>
+" 获取当前方法的返回类型
+nnoremap <leader>i :action ExpressionTypeInfo<CR>
+
+" ============ 注释相关 ============
+nnoremap <leader>/ :action CommentByLineComment<CR>
+vnoremap <leader>/ :action CommentByLineComment<CR>
+" ============ 注释相关 ============
+
+" ============ format相关 ============
+nnoremap == :action ReformatCode<CR>
+vnoremap == :action ReformatCode<CR>
+" ============ format相关 ============
+
+" ============ 提示相关 ============
+" 跳转到下一个错误的地方
+" nnoremap <C-n> :action GotoNextError<CR>
+" 跳转到上一个错误的地方
+" nnoremap <C-p> :action GotoPreviousError<CR>
+" 提示 intention
+" nnoremap <C-i> :action ShowIntentionActions<CR>
+
+" ============ 调试相关 ============
+" 添加断点
+nnoremap ;b :action ToggleLineBreakpoint<CR>
+" 执行语句
+nnoremap ;e :action EvaluateExpression<CR>
+" 开始debug
+" nnoremap ;d :action Debug<CR>
+" 使得程序继续执行
+nnoremap ;r :action Resume<CR>
+" step
+nnoremap ;s :action StepInto<CR>
+" next
+nnoremap ;n :action StepOver<CR>
+" ============ 调试相关 ============
+"
+nnoremap <leader>; :action EditorCompleteStatement<CR>
+
+vnoremap <C-y> "*y
+"inoremap  <C-n> <A-/>
+
+" 关闭项目
+nnoremap ,q :action CloseProject<CR>
