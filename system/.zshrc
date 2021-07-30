@@ -78,8 +78,8 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-#plugins=(git)
-plugins=(zsh-completions)
+plugins=(git)
+# plugins=(zsh-completions)
 autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
@@ -111,4 +111,9 @@ alias "work"="cd /Users/jevan/Documents/ruby_projects/readio_server/"
 alias "ruby_projects"="cd /Users/jevan/Documents/ruby_projects/"
 alias "java_projects"="cd /Users/jevan/Documents/java_projects/"
 alias "js_projects"="cd /Users/jevan/Documents/js_projects/"
+alias "blog"="cd /Users/jevan/Documents/ruby_projects/jevanwu.github.com"
 alias "ghb"="github"
+alias "q!"="ruby /Users/jevan/Documents/ruby_projects/query_tool/main.rb"
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin

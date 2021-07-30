@@ -4,8 +4,8 @@
 let mapleader = " "
 set nocompatible               " be iMproved
 set clipboard=unnamed
+set hidden
 filetype off                   " required!
-" set rtp+=~/.vim/bundle/Vundle.vim
 " set cursorline
 
 " set ruler
@@ -44,6 +44,8 @@ nnoremap <silent> <leader>A v$h
 nnoremap <silent> <leader>I v^
 
 syntax enable
+" Use new regular expression engine
+set re=0
 filetype plugin indent on     " required!
 set omnifunc=syntaxcomplete#Complete
 
@@ -58,9 +60,14 @@ set omnifunc=syntaxcomplete#Complete
 " let Vundle manage Vundle
 " required!
 call plug#begin('~/.vim/plugged')
-" Plugin 'VundleVim/Vundle.vim'
 
-Plug 'slim-template/vim-slim'
+Plug 'bagrat/vim-buffet'
+" Plug 'ap/vim-buftabline'
+
+" Note: Make sure the function is defined before `vim-buffet` is loaded.
+function! g:BuffetSetCustomColors()
+  hi! BuffetCurrentBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#00FF00 guifg=#000000
+endfunction
 
 " original repos on github
 Plug 'tpope/vim-fugitive'
@@ -94,14 +101,6 @@ Plug 'tomtom/tcomment_vim'
 "the-silver-search
 " Plug 'rking/ag.vim'
 
-Plug 'kana/vim-fakeclip'
-
-" Plug 'majutsushi/tagbar'
-" " config for tagbar
-" let g:tagbar_width=35
-" let g:tagbar_autofocus=1
-" nmap <Leader>8 :TagbarToggle<CR>
-
 Plug 'tpope/vim-surround'
 
 Plug 'vim-airline/vim-airline'
@@ -115,20 +114,12 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'tpope/vim-endwise'
 
-Plug 'vim-ruby/vim-ruby'
+" Plug 'vim-ruby/vim-ruby'
 
 Plug 'janko-m/vim-test'
 
 Plug 'Shougo/unite.vim'
-Plug 'devjoe/vim-codequery'
-
-Plug 'dyng/ctrlsf.vim'
-vmap <C-f> <Plug>CtrlSFVwordExec
-nmap <C-f> <Plug>CtrlSFPrompt
-
-" copy into the system clipboard
-vmap <C-y> "*y
-
+" Plug 'devjoe/vim-codequery'
 " these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
 nmap <silent> t<C-n> :TestNearest<CR>
 " t Ctrl+n
@@ -140,6 +131,14 @@ nmap <silent> t<C-s> :TestSuite<CR>
 " t Ctrl+l
 " nmap <silent> t<C-g> :TestVisit<CR>
 " t Ctrl+g
+
+Plug 'dyng/ctrlsf.vim'
+vmap <C-f> <Plug>CtrlSFVwordExec
+nmap <C-f> <Plug>CtrlSFPrompt
+
+" copy into the system clipboard
+vmap <C-y> "*y
+
 Plug 'christoomey/vim-tmux-navigator'
 
 " If installed using HomebrewrecUploaded
@@ -167,15 +166,54 @@ Plug 'scrooloose/syntastic'
 "Multiple Cursors
 Plug 'terryma/vim-multiple-cursors'
 
-"Display the indention levels with thin vertical lines
-Plug 'Yggdroot/indentLine'
+"ctags
+" Plug 'szw/vim-tags'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
+set statusline+=%{gutentags#statusline()}
+" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
+let g:gutentags_add_default_project_roots=0
+let g:gutentags_project_root = ['.git', '.root']
+" 用作debug的
+"let g:gutentags_trace = 1
+
+" 所生成的数据文件的名称 "
+" let g:gutentags_ctags_tagfile = '.git/tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
+let g:gutentags_cache_dir = expand('~/.cache/tags/')
+
+" change focus to quickfix window after search (optional).
+" let g:gutentags_plus_switch = 1
+
+" enable gtags module
+" let g:gutentags_modules = ['ctags', 'gtags_cscope']
+let g:gutentags_ctags_auto_set_tags = 1
+"
+
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+
+
+" 配置 ctags 的参数 "
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+" Plug 'majutsushi/tagbar'
+" " config for tagbar
+" let g:tagbar_width=35
+" let g:tagbar_autofocus=1
+" nmap <Leader>8 :TagbarToggle<CR>
 
 " the frontend plugin
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'leafgarland/typescript-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ianks/vim-tsx'
+Plug 'moll/vim-node'
 " Plug 'marijnh/tern_for_vim'
 
 " Flutter Plugin

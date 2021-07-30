@@ -19,6 +19,7 @@ nnoremap <silent> <leader>d :nohlsearch<CR>
 " 设置窗口跳转
 noremap <silent> <C-H> <C-W>h
 noremap <silent> <C-L> <C-W>l
+noremap <leader>p "0p
 
 " ideavim支持调用idea intellj原生的action.
 " 在这里 https://anotepad.com/notes/7g8gn4 列出了可以使用的actionlist
