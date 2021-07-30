@@ -8,5 +8,5 @@ This is my own config files of dotfiles
   - `ln -s ~/dotfiles/system/.zshrc ~/.zshrc`
   - `ln -s ~/dotfiles/vim/.vimrc ~/.vimrc`
   - `ln -s ~/dotfiles/vim ~/vim`
-3. here you go! enjoy yourself! :)
+3. here you go! enjoy yourself! 😆
 
