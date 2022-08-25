@@ -1,6 +1,6 @@
 "*****************************************************************************
 "" Basic Setup
-"*****************************************************************************"
+"*****************************************************************************
 let mapleader = " "
 set nocompatible               " be iMproved
 set clipboard=unnamed
@@ -12,6 +12,7 @@ set smartindent
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set maxmempattern=5000
 set autoread
 set encoding=utf-8
 set scrolloff=999
@@ -46,16 +47,22 @@ set omnifunc=syntaxcomplete#Complete
 "" My key bindings
 "*****************************************************************************
 " buffer switch shortcut
+map <Leader>c :enew<CR>
 map <Leader>n :bn<CR>
 map <Leader>d :bd<CR>
-map <Leader>p :bp<CR>
-map <Leader>c :enew<CR>
+" last buffer
+map <Leader>l :bp<CR>
 " copy into the system clipboard
 vmap <C-y> "*y
 " select content from cursor to end of line
 nnoremap <silent> <leader>A v$h
 " select content from cursor to start of line
 nnoremap <silent> <leader>I v^
+nnoremap <silent> <leader>q :q<CR>
+" go the start of the line
+nnoremap <silent> <leader>s ^
+" go the end of the line
+nnoremap <silent> <leader>e $
 " past with register 0, which store the last yanked content
 noremap <leader>p "0p
 
@@ -76,6 +83,8 @@ endif
 if filereadable(expand("~/vim/js_plugins.vim"))
   source ~/vim/js_plugins.vim
 endif
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 

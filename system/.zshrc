@@ -130,6 +130,7 @@ alias "q!"="ruby /Users/jevan/Documents/ruby_projects/query_tool/main.rb"
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+source "/Users/jevan/.gvm/scripts/gvm"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -10,7 +10,8 @@ nmap <leader> <Plug>(easymotion-prefix)
 nnoremap <silent> <leader>q :q<CR>
 nnoremap <silent> <leader>A v$h
 nnoremap <silent> <leader>I v^
-nnoremap <silent> e $
+nnoremap <silent> <leader>e $
+nnoremap <silent> <leader>s ^
 
 " 去掉highlight显示
 nnoremap <silent> <leader>d :nohlsearch<CR>
@@ -28,7 +29,7 @@ noremap <leader>p "0p
 " 原有的vim配置习惯保持不变.
 
 " 打开当前文件所在的目录
-noremap <C-t> :action ActivateProjectToolWindow<CR>
+" noremap <C-t> :action ActivateProjectToolWindow<CR>
 " 关闭(close)其他的窗口 只剩下vim编辑区域
 "
 noremap <leader>t :action HideAllWindows<CR>
