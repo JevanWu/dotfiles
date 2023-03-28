@@ -1,6 +1,7 @@
 set hlsearch
 set visualbell
 set easymotion
+set multicursor
 
 let mapleader = " "
 
@@ -22,6 +23,11 @@ noremap <silent> <C-H> <C-W>h
 noremap <silent> <C-L> <C-W>l
 noremap <leader>p "0p
 
+" multicursor
+"map <leader>ms (multicursor-ms/)
+"map <leader>mc (multicursor-mc/)
+
+"
 " ideavim支持调用idea intellj原生的action.
 " 在这里 https://anotepad.com/notes/7g8gn4 列出了可以使用的actionlist
 " 也可以通过在 ideavim 中调用 `:actionlist` 查看所有支持的action
@@ -126,3 +132,9 @@ vnoremap <C-y> "*y
 
 " 关闭项目
 nnoremap ,q :action CloseProject<CR>
+
+Plug 'terryma/vim-multiple-cursors'
+map mc <A-n>
+map mx <A-x>
+map mp <A-p>
+map gmc g<A-n>

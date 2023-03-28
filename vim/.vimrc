@@ -83,6 +83,10 @@ endif
 if filereadable(expand("~/vim/js_plugins.vim"))
   source ~/vim/js_plugins.vim
 endif
+"kotlin
+Plug 'udalov/kotlin-vim'
+"python
+Plug 'hdima/python-syntax'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 

@@ -120,17 +120,32 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias "work"="cd /Users/jevan/Documents/ruby_projects/readio_server/"
+alias "work"="cd /Users/jevan/Documents/java_projects/aig/SaFiMono/services/loan-manager"
 alias "ruby_projects"="cd /Users/jevan/Documents/ruby_projects/"
 alias "java_projects"="cd /Users/jevan/Documents/java_projects/"
 alias "js_projects"="cd /Users/jevan/Documents/js_projects/"
 alias "blog"="cd /Users/jevan/Documents/ruby_projects/jevanwu.github.com"
 alias "ghb"="github"
 alias "q!"="ruby /Users/jevan/Documents/ruby_projects/query_tool/main.rb"
+alias "tctl"="docker exec temporal-admin-tools tctl"
+alias "d_files"="/Users/jevan/Documents/docker_files"
+alias "kt_check"="./gradlew clean build -x integrationTest"
+alias "kt_format"="./gradlew ktlintFormat"
+alias "g_uuid"="ruby /Users/jevan/Documents/ruby_projects/tools/uuid.rb"
+alias "open_test_report"="open /Users/jevan/Documents/java_projects/aig/SaFiMono/services/loan-manager/build/jacocoReport/index.html"
 
+# ENV
+#   GO
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+#   Flutter
+export PATH="$PATH:/Users/jevan/development/flutter/bin"
+
 source "/Users/jevan/.gvm/scripts/gvm"
+
+# confluent
+export PATH=$(pwd)/bin:$PATH
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
