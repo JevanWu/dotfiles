@@ -120,7 +120,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias "work"="cd /Users/jevan/Documents/java_projects/aig/SaFiMono/services/loan-manager"
+alias "work"="cd /Users/jevan/Documents/java_projects/leapxpert"
 alias "ruby_projects"="cd /Users/jevan/Documents/ruby_projects/"
 alias "java_projects"="cd /Users/jevan/Documents/java_projects/"
 alias "js_projects"="cd /Users/jevan/Documents/js_projects/"
@@ -139,6 +139,13 @@ alias "open_test_report"="open /Users/jevan/Documents/java_projects/aig/SaFiMono
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+# SWITCH TO JAVA VERSION 11
+export JAVA_HOME=`/usr/libexec/java_home -v 11.0.5`
+
+# System env for starting lxp projects:
+export LXP_REPOSITORY_USERNAME="backend-ro"
+export LXP_REPOSITORY_PASSWORD="LeapXpert@Secret"
+
 #   Flutter
 export PATH="$PATH:/Users/jevan/development/flutter/bin"
 
@@ -149,3 +156,9 @@ export PATH=$(pwd)/bin:$PATH
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jevan/development/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jevan/development/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jevan/development/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jevan/development/google-cloud-sdk/completion.zsh.inc'; fi
