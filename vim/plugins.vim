@@ -8,7 +8,7 @@ nmap <Leader>vp :VimuxPromptCommand<CR>
 nmap <Leader>vc :VimuxCloseRunner<CR>
 
 Plug 'scrooloose/nerdtree'
-map <C-t> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 map <leader>t :NERDTreeFind<CR>
 
 set rtp+=/usr/local/opt/fzf
@@ -48,9 +48,6 @@ Plug 'airblade/vim-gitgutter'
 
 "Syntax checking hacks for vim
 Plug 'scrooloose/syntastic'
-
-"Multiple Cursors
-Plug 'terryma/vim-multiple-cursors'
 
 "" Markdown
 Plug 'plasticboy/vim-markdown'

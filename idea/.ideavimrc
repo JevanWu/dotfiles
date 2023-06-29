@@ -2,26 +2,41 @@ set hlsearch
 set visualbell
 set easymotion
 set multicursor
+set relativenumber
+set number
+set NERDTree
 
 let mapleader = " "
 
+nmap <leader> <Plug>(easymotion-prefix)
+
+"NerdTree
+noremap <C-n> :NERDTree<CR>
+
 " nnoremap <silent> <leader>w :w<CR>
 " map <leader>w :action AceAction<CR>
-nmap <leader> <Plug>(easymotion-prefix)
 nnoremap <silent> <leader>q :q<CR>
-nnoremap <silent> <leader>A v$h
-nnoremap <silent> <leader>I v^
-nnoremap <silent> <leader>e $
-nnoremap <silent> <leader>s ^
+nnoremap <silent> <leader>i v^
+nnoremap <silent> <leader>a v$h
+
+inoremap <silent> <C-h> <Left>
+inoremap <silent> <C-j> <Down>
+inoremap <silent> <C-k> <Up>
+inoremap <silent> <C-l> <Right>
+inoremap <silent> <C-b> <ESC>^i
+inoremap <silent> <C-e> <End>
 
 " 去掉highlight显示
-nnoremap <silent> <leader>d :nohlsearch<CR>
+" nnoremap <silent> <leader>d :nohlsearch<CR>
 
 " ============ 窗口相关 ============
 " 设置窗口跳转
 noremap <silent> <C-H> <C-W>h
 noremap <silent> <C-L> <C-W>l
 noremap <leader>p "0p
+
+nnoremap <tab> :action NextTab<CR>
+nnoremap <leader><tab> :action PreviousTab<CR>
 
 " multicursor
 "map <leader>ms (multicursor-ms/)
@@ -43,9 +58,13 @@ noremap <leader>t :action HideAllWindows<CR>
 
 " ============ 查找相关 ============
 " 搜索任意文件
-nmap <C-p> :action GotoFile<CR>
+nnoremap <C-p> :action GotoFile<CR>
 " 查找最近打开的文件
 nnoremap <C-b> :action RecentFiles<CR>
+nnoremap <C-f> :action FindInPath<CR>
+vnoremap <C-f> :action FindSelectionInPath<CR>
+"vnoremap <C-f> :action FindUsages<CR>
+
 " 查找方法定义, 这个也用了`]`, 和vim保持一致
 nnoremap <C-]> :action GotoDeclaration<CR>
 nnoremap gs :action GotoSuperMethod<CR>
@@ -55,9 +74,6 @@ nnoremap glc :action JumpToLastChange<CR>
 nnoremap gk :action GotoClass<CR>
 " 查找类对应的test
 nnoremap gt :action GotoTest<CR>
-
-nnoremap <C-f> :action FindInPath<CR>
-vnoremap <C-f> :action FindUsages<CR>
 " ============ 查找相关 ============
 
 " 查看当前文件的所有方法, class等结构信息
@@ -90,7 +106,7 @@ nnoremap <leader>n :action NewElement<CR>
 " 查看javadoc
 nnoremap <leader>d :action QuickJavaDoc<CR>
 " 获取当前方法的返回类型
-nnoremap <leader>i :action ExpressionTypeInfo<CR>
+nnoremap <leader>e :action ExpressionTypeInfo<CR>
 
 " ============ 注释相关 ============
 nnoremap <leader>/ :action CommentByLineComment<CR>
