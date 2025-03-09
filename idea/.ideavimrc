@@ -1,23 +1,15 @@
-set hlsearch
+" set hlsearch
 set visualbell
 set easymotion
 set multicursor
 set relativenumber
 set number
-set NERDTree
-
 let mapleader = " "
 
 nmap <leader> <Plug>(easymotion-prefix)
-
-"NerdTree
-noremap <C-n> :NERDTree<CR>
-
-" nnoremap <silent> <leader>w :w<CR>
-" map <leader>w :action AceAction<CR>
 nnoremap <silent> <leader>q :q<CR>
-nnoremap <silent> <leader>i v^
-nnoremap <silent> <leader>a v$h
+nnoremap <silent> <leader>b v^
+nnoremap <silent> <leader>e v$h
 
 inoremap <silent> <C-h> <Left>
 inoremap <silent> <C-j> <Down>
@@ -25,132 +17,125 @@ inoremap <silent> <C-k> <Up>
 inoremap <silent> <C-l> <Right>
 inoremap <silent> <C-b> <ESC>^i
 inoremap <silent> <C-e> <End>
+vnoremap <C-y> "*y
 
-" 去掉highlight显示
-" nnoremap <silent> <leader>d :nohlsearch<CR>
-
-" ============ 窗口相关 ============
-" 设置窗口跳转
-noremap <silent> <C-H> <C-W>h
-noremap <silent> <C-L> <C-W>l
+" ============ Window-related ============ "
+" Set window jumping "
+" noremap <silent> <C-H> <C-W>h
+" noremap <silent> <C-L> <C-W>l
 noremap <leader>p "0p
 
 nnoremap <tab> :action NextTab<CR>
 nnoremap <leader><tab> :action PreviousTab<CR>
+" ============ Window-related ============ "
 
-" multicursor
-"map <leader>ms (multicursor-ms/)
-"map <leader>mc (multicursor-mc/)
+" ============ Navigation-related ============ "
+" Jump to the previous location, Vim’s <C-O> "
+nnoremap <C-o> :action Back<CR>
+" Jump to the next location, Vim’s <C-I> "
+nnoremap <C-i> :action Forward<CR>
+" ============ Navigation-related ============ "
 
-"
-" ideavim支持调用idea intellj原生的action.
-" 在这里 https://anotepad.com/notes/7g8gn4 列出了可以使用的actionlist
-" 也可以通过在 ideavim 中调用 `:actionlist` 查看所有支持的action
-" 下面的所有的配置都依赖于idea本身的actionlist. 通过原生的配置, 可以使得
-" 原有的vim配置习惯保持不变.
-
-" 打开当前文件所在的目录
-" noremap <C-t> :action ActivateProjectToolWindow<CR>
-" 关闭(close)其他的窗口 只剩下vim编辑区域
-"
-noremap <leader>t :action HideAllWindows<CR>
-" ============ 窗口相关 ============
-
-" ============ 查找相关 ============
-" 搜索任意文件
+" ============ Search-related ============ "
+" Search for any file "
 nnoremap <C-p> :action GotoFile<CR>
-" 查找最近打开的文件
+" Search recently opened files "
 nnoremap <C-b> :action RecentFiles<CR>
 nnoremap <C-f> :action FindInPath<CR>
 vnoremap <C-f> :action FindSelectionInPath<CR>
 "vnoremap <C-f> :action FindUsages<CR>
 
-" 查找方法定义, 这个也用了`]`, 和vim保持一致
+" Jump to method definition, also uses `]`, consistent with Vim "
 nnoremap <C-]> :action GotoDeclaration<CR>
 nnoremap gs :action GotoSuperMethod<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap glc :action JumpToLastChange<CR>
-" 查找java的klass
+" Search for Java class "
 nnoremap gk :action GotoClass<CR>
-" 查找类对应的test
+" Search for the test corresponding to the class "
 nnoremap gt :action GotoTest<CR>
-" ============ 查找相关 ============
+" ============ Search-related ============ "
 
-" 查看当前文件的所有方法, class等结构信息
-nnoremap ss :action ActivateStructureToolWindow<CR>
-
-" ============ 跳转相关 ============
-" 跳转到前一个地方, vim的 <C-O>
-nnoremap <C-o> :action Back<CR>
-" 跳转到后一个地方, vim的 <C-I>
-nnoremap <C-i> :action Forward<CR>
-" ============ 跳转相关 ============
-
-" ============ 编译, 运行相关 ============
-" nnoremap <leader>r :action RunClass<CR>
-" nnoremap <C-r> :action Debug<CR>
-nnoremap <leader>r :action DebugClass<CR>
-nnoremap <leader>lb :action ToggleLineBreakpoint<CR>
-nnoremap <leader>mb :action ToggleMethodBreakpoint<CR>
-" ============ 编译, 运行, debug相关 ============
-
-" ============ 拷贝路径 ============
-nnoremap <leader>' :action CopyPaths<CR>
-nnoremap <leader>; :action CopyReference<CR>
-" ============ 拷贝路径 ============
-
-" 移动并修改当前文件
-nnoremap <leader>m :action RenameFile<CR>
-" 创建新的元素
-nnoremap <leader>n :action NewElement<CR>
-" 查看javadoc
-nnoremap <leader>d :action QuickJavaDoc<CR>
-" 获取当前方法的返回类型
-nnoremap <leader>e :action ExpressionTypeInfo<CR>
-
-" ============ 注释相关 ============
+" ============ Comment-related ============ "
 nnoremap <leader>/ :action CommentByLineComment<CR>
 vnoremap <leader>/ :action CommentByLineComment<CR>
-" ============ 注释相关 ============
+" ============ Comment-related ============ "
 
-" ============ format相关 ============
+" ============ Format-related ============ "
 nnoremap == :action ReformatCode<CR>
 vnoremap == :action ReformatCode<CR>
-" ============ format相关 ============
+" ============ Format-related ============ "
 
-" ============ 提示相关 ============
-" 跳转到下一个错误的地方
+" Move and modify the current file "
+nnoremap <leader>m :action RenameFile<CR>
+" View Javadoc "
+nnoremap <leader>d :action QuickJavaDoc<CR>
+" Rename "
+nnoremap <leader>rn :action RenameElement<CR>
+
+"
+" IdeaVim supports calling native IntelliJ IDEA actions. "
+" Here https://anotepad.com/notes/7g8gn4 lists the available action list "
+" You can also use `:actionlist` in IdeaVim to view all supported actions "
+
+" ============ IntelliJ IDEA dedicated configs ============ "
+
+" ============ Compile, Run-related ============ "
+" nnoremap <leader>r :action RunClass<CR>
+" nnoremap <C-r> :action Debug<CR>
+nnoremap <leader>r :action Debug<CR>
+nnoremap <leader>lb :action ToggleLineBreakpoint<CR>
+nnoremap <leader>mb :action ToggleMethodBreakpoint<CR>
+" ============ Compile, Run, Debug-related ============ "
+
+" ============ Copy Path-related ============ "
+nnoremap <leader>' :action CopyPaths<CR>
+nnoremap <leader>; :action CopyReference<CR>
+" ============ Copy Path-related ============ "
+
+" ============ Suggestion-related ============ "
+" Jump to the next error location "
 " nnoremap <C-n> :action GotoNextError<CR>
-" 跳转到上一个错误的地方
+" Jump to the previous error location "
 " nnoremap <C-p> :action GotoPreviousError<CR>
-" 提示 intention
+" Show intention suggestions "
 " nnoremap <C-i> :action ShowIntentionActions<CR>
 
-" ============ 调试相关 ============
-" 添加断点
+" ============ Debugging-related ============ "
+" Add breakpoint "
 nnoremap ;b :action ToggleLineBreakpoint<CR>
-" 执行语句
+" Evaluate expression "
 nnoremap ;e :action EvaluateExpression<CR>
-" 开始debug
+" Start debug "
 " nnoremap ;d :action Debug<CR>
-" 使得程序继续执行
+" Resume program execution "
 nnoremap ;r :action Resume<CR>
-" step
+" Step into "
 nnoremap ;s :action StepInto<CR>
-" next
+" Step over "
 nnoremap ;n :action StepOver<CR>
-" ============ 调试相关 ============
+" ============ Debugging-related ============ "
 "
 nnoremap <leader>; :action EditorCompleteStatement<CR>
-
-vnoremap <C-y> "*y
-"inoremap  <C-n> <A-/>
-
-" 关闭项目
-nnoremap ,q :action CloseProject<CR>
 
 Plug 'terryma/vim-multiple-cursors'
 map mc <A-n>
 map mx <A-x>
 map mp <A-p>
 map gmc g<A-n>
+
+"multicursor
+"map <leader>ms (multicursor-ms/)
+"map <leader>mc (multicursor-mc/)
+
+" Remove highlight display "
+" nnoremap <silent> <leader>d :nohlsearch<CR>
+
+" View the structure information of all methods, classes, etc., in the current file "
+nnoremap ss :action ActivateStructureToolWindow<CR>
+
+" Open the directory where the current file is located "
+" noremap <C-t> :action ActivateProjectToolWindow<CR>
+" Close other windows, leaving only the Vim editing area "
+"
+noremap <leader>h :action HideAllWindows<CR>
