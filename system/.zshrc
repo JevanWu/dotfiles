@@ -4,7 +4,6 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -15,7 +14,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+eval "$(rbenv init - zsh)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -124,6 +123,7 @@ alias "work"="cd /Users/jevan/Documents/java_projects/leapxpert"
 alias "ruby_projects"="cd /Users/jevan/Documents/ruby_projects/"
 alias "java_projects"="cd /Users/jevan/Documents/java_projects/"
 alias "js_projects"="cd /Users/jevan/Documents/js_projects/"
+alias "ruby_projects"="cd /Users/jevan/Documents/ruby_projects/"
 alias "blog"="cd /Users/jevan/Documents/ruby_projects/jevanwu.github.com"
 alias "ghb"="github"
 alias "q!"="ruby /Users/jevan/Documents/ruby_projects/query_tool/main.rb"
@@ -133,23 +133,27 @@ alias "kt_check"="./gradlew clean build -x integrationTest"
 alias "kt_format"="./gradlew ktlintFormat"
 alias "g_uuid"="ruby /Users/jevan/Documents/ruby_projects/tools/uuid.rb"
 alias "open_test_report"="open /Users/jevan/Documents/java_projects/aig/SaFiMono/services/loan-manager/build/jacocoReport/index.html"
+alias "envoy"="docker run --rm envoyproxy/envoy:dev-71a50bea7bc46e965eae3a12253d9021de40fcf3"
+alias "md5sum"="md5"
 
-# ENV
-#   GO
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-
-# SWITCH TO JAVA VERSION 11
-export JAVA_HOME=`/usr/libexec/java_home -v 11.0.5`
+# k8s
+alias "kube_envs"="kubectl config get-contexts"
+alias "kube_az_dev"="kubectl config set current-context lxp-dev-aks"
+alias "kube_az_qa"="kubectl config set current-context lxp-qa-saas-aks"
 
 # System env for starting lxp projects:
 export LXP_REPOSITORY_USERNAME="backend-ro"
 export LXP_REPOSITORY_PASSWORD="LeapXpert@Secret"
 
-#   Flutter
-export PATH="$PATH:/Users/jevan/development/flutter/bin"
-
+# ENV
+#   GO
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 source "/Users/jevan/.gvm/scripts/gvm"
+
+# JAVA
+# export JAVA_HOME=`/usr/libexec/java_home -v 11.0.5`
+source ~/.sdkman/bin/sdkman-init.sh
 
 # confluent
 export PATH=$(pwd)/bin:$PATH
@@ -158,7 +162,7 @@ export PATH=$(pwd)/bin:$PATH
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/jevan/development/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jevan/development/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/jevan/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jevan/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/jevan/development/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jevan/development/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/jevan/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jevan/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
