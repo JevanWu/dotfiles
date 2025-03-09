@@ -1,1 +1,130 @@
-settings.json
+{
+    // "extensions.experimental.affinity": {
+    //     "asvetliakov.vscode-neovim": 1
+    // },
+    "go.toolsManagement.autoUpdate": true,
+    "vim.digraphs": {},
+    "vim.leader": " ",
+    "vim.insertModeKeyBindingsNonRecursive": [
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "="
+            ],
+            "commands": [
+                "editor.action.formatDocument"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b"
+            ],
+            "after": [
+                "v",
+                "^"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "e"
+            ],
+            "after": [
+                "v",
+                "$",
+                "h"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "after": [
+                "\"",
+                "0",
+                "p"
+            ]
+        },
+        {
+            "before": [
+                "<tab>"
+            ],
+            "commands": [
+                "workbench.action.nextEditor"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "<tab>"
+            ],
+            "commands": [
+                "workbench.action.previousEditor"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "s"
+            ],
+            "commands": [
+                "editor.action.goToDeclaration"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
+        },
+        {
+            "before": [
+                "<C-b>"
+            ],
+            "commands": [
+                "workbench.action.quickOpenRecent"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "r",
+                "n"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "/"
+            ],
+            "commands": [
+                "editor.action.commentLine"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<C-y>"
+            ],
+            "after": [
+                "\"",
+                "*",
+                "y"
+            ]
+        }
+    ],
+    "vim.useSystemClipboard": true,
+    "workbench.activityBar.location": "hidden",
+    "editor.lineNumbers": "on",
+}
