@@ -1,0 +1,141 @@
+" set hlsearch
+set visualbell
+set easymotion
+set multicursor
+set relativenumber
+set number
+let mapleader = " "
+
+nmap <leader> <Plug>(easymotion-prefix)
+nnoremap <silent> <leader>q :q<CR>
+nnoremap <silent> <leader>b v^
+nnoremap <silent> <leader>e v$h
+
+inoremap <silent> <C-h> <Left>
+inoremap <silent> <C-j> <Down>
+inoremap <silent> <C-k> <Up>
+inoremap <silent> <C-l> <Right>
+inoremap <silent> <C-b> <ESC>^i
+inoremap <silent> <C-e> <End>
+vnoremap <C-y> "*y
+
+" ============ Window-related ============ "
+" Set window jumping "
+noremap <silent> <C-H> <C-W>h
+noremap <silent> <C-L> <C-W>l
+noremap <leader>p "0p
+
+nnoremap <tab> :action NextTab<CR>
+nnoremap <leader><tab> :action PreviousTab<CR>
+" ============ Window-related ============ "
+
+" ============ Navigation-related ============ "
+" Jump to the previous location, Vim’s <C-O> "
+nnoremap <C-o> :action Back<CR>
+" Jump to the next location, Vim’s <C-I> "
+nnoremap <C-i> :action Forward<CR>
+" ============ Navigation-related ============ "
+
+" ============ Search-related ============ "
+" Search for any file "
+nnoremap <C-p> :action GotoFile<CR>
+" Search recently opened files "
+nnoremap <C-b> :action RecentFiles<CR>
+nnoremap <C-f> :action FindInPath<CR>
+vnoremap <C-f> :action FindSelectionInPath<CR>
+"vnoremap <C-f> :action FindUsages<CR>
+
+" Jump to method definition, also uses `]`, consistent with Vim "
+nnoremap <C-]> :action GotoDeclaration<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap glc :action JumpToLastChange<CR>
+" Search for Java class "
+nnoremap gk :action GotoClass<CR>
+" Search for the test corresponding to the class "
+nnoremap gt :action GotoTest<CR>
+" ============ Search-related ============ "
+
+" ============ Comment-related ============ "
+nnoremap <leader>/ :action CommentByLineComment<CR>
+vnoremap <leader>/ :action CommentByLineComment<CR>
+" ============ Comment-related ============ "
+
+" ============ Format-related ============ "
+nnoremap == :action ReformatCode<CR>
+vnoremap == :action ReformatCode<CR>
+" ============ Format-related ============ "
+
+" Move and modify the current file "
+nnoremap <leader>m :action RenameFile<CR>
+" View Javadoc "
+nnoremap <leader>d :action QuickJavaDoc<CR>
+" Rename "
+nnoremap <leader>rn :action RenameElement<CR>
+
+"
+" IdeaVim supports calling native IntelliJ IDEA actions. "
+" Here https://anotepad.com/notes/7g8gn4 lists the available action list "
+" You can also use `:actionlist` in IdeaVim to view all supported actions "
+
+" ============ IntelliJ IDEA dedicated configs ============ "
+
+" ============ Compile, Run-related ============ "
+" nnoremap <leader>r :action RunClass<CR>
+" nnoremap <C-r> :action Debug<CR>
+nnoremap <leader>r :action Debug<CR>
+nnoremap <leader>lb :action ToggleLineBreakpoint<CR>
+nnoremap <leader>mb :action ToggleMethodBreakpoint<CR>
+" ============ Compile, Run, Debug-related ============ "
+
+" ============ Copy Path-related ============ "
+nnoremap <leader>' :action CopyPaths<CR>
+nnoremap <leader>; :action CopyReference<CR>
+" ============ Copy Path-related ============ "
+
+" ============ Suggestion-related ============ "
+" Jump to the next error location "
+" nnoremap <C-n> :action GotoNextError<CR>
+" Jump to the previous error location "
+" nnoremap <C-p> :action GotoPreviousError<CR>
+" Show intention suggestions "
+" nnoremap <C-i> :action ShowIntentionActions<CR>
+
+" ============ Debugging-related ============ "
+" Add breakpoint "
+nnoremap ;b :action ToggleLineBreakpoint<CR>
+" Evaluate expression "
+nnoremap ;e :action EvaluateExpression<CR>
+" Start debug "
+" nnoremap ;d :action Debug<CR>
+" Resume program execution "
+nnoremap ;r :action Resume<CR>
+" Step into "
+nnoremap ;s :action StepInto<CR>
+" Step over "
+nnoremap ;n :action StepOver<CR>
+" ============ Debugging-related ============ "
+"
+nnoremap <leader>; :action EditorCompleteStatement<CR>
+
+Plug 'terryma/vim-multiple-cursors'
+map mc <A-n>
+map mx <A-x>
+map mp <A-p>
+map gmc g<A-n>
+
+"multicursor
+"map <leader>ms (multicursor-ms/)
+"map <leader>mc (multicursor-mc/)
+
+" Remove highlight display "
+" nnoremap <silent> <leader>d :nohlsearch<CR>
+
+" View the structure information of all methods, classes, etc., in the current file "
+nnoremap ss :action ActivateStructureToolWindow<CR>
+
+" Open the directory where the current file is located "
+" noremap <C-t> :action ActivateProjectToolWindow<CR>
+" Close other windows, leaving only the Vim editing area "
+"
+noremap <leader>h :action HideAllWindows<CR>

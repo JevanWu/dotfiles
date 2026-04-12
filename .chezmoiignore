@@ -1,0 +1,2 @@
+# Never track secrets file - create ~/.zshrc.secrets manually on each machine
+.zshrc.secrets

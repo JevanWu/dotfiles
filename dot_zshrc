@@ -1,0 +1,104 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# rbenv
+if [ -d "$HOME/.rbenv" ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init - zsh)"
+fi
+
+eval "$(starship init zsh)"
+
+# Aliases
+alias gst="git status"
+alias work="cd $HOME/Documents/java_projects/leapxpert"
+alias ruby_projects="cd $HOME/Documents/ruby_projects/"
+alias java_projects="cd $HOME/Documents/java_projects/"
+alias js_projects="cd $HOME/Documents/js_projects/"
+alias blog="cd $HOME/Documents/ruby_projects/jevanwu.github.com"
+alias ghb="github"
+alias "q!"="ruby $HOME/Documents/ruby_projects/query_tool/main.rb"
+alias tctl="docker exec temporal-admin-tools tctl"
+alias d_files="$HOME/Documents/docker_files"
+alias kt_check="./gradlew clean build -x integrationTest"
+alias kt_format="./gradlew ktlintFormat"
+alias g_uuid="ruby $HOME/Documents/ruby_projects/tools/uuid.rb"
+alias open_test_report="open $HOME/Documents/java_projects/aig/SaFiMono/services/loan-manager/build/jacocoReport/index.html"
+alias envoy="docker run --rm envoyproxy/envoy:dev-71a50bea7bc46e965eae3a12253d9021de40fcf3"
+alias md5sum="md5"
+alias clean_container="docker ps -aq | xargs docker rm"
+alias pip3='python3 -m pip'
+
+# k8s
+alias kube_envs="kubectl config get-contexts"
+alias kube_az_dev="kubectl config set current-context lxp-dev-aks"
+alias kube_az_qa="kubectl config set current-context lxp-qa-saas-aks"
+alias k="kubectl"
+
+# NVM (lazy-loaded for faster shell startup)
+export NVM_DIR="$HOME/.nvm"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  nvm() {
+    unfunction "$0"
+    source "$NVM_DIR/nvm.sh"
+    "$0" "$@"
+  }
+  node() {
+    unfunction "$0"
+    source "$NVM_DIR/nvm.sh"
+    "$0" "$@"
+  }
+  npm() {
+    unfunction "$0"
+    source "$NVM_DIR/nvm.sh"
+    "$0" "$@"
+  }
+fi
+
+# Go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+[ -s "$HOME/.gvm/scripts/gvm" ] && source "$HOME/.gvm/scripts/gvm"
+
+# Java (SDKMAN)
+[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Google Cloud SDK
+if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then
+  source "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"
+fi
+if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then
+  source "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"
+fi
+
+# AKS helper functions
+[[ -f ~/.zsh/aks_helper.zsh ]] && source ~/.zsh/aks_helper.zsh
+
+# kubectl completion (cached for faster startup)
+if [[ -f ~/.zsh/kubectl_completion.zsh ]]; then
+  source ~/.zsh/kubectl_completion.zsh
+elif [[ $commands[kubectl] ]]; then
+  mkdir -p ~/.zsh
+  kubectl completion zsh > ~/.zsh/kubectl_completion.zsh
+  source ~/.zsh/kubectl_completion.zsh
+fi
+
+export PATH="$HOME/.local/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# Cato Networks Root CA for Claude Code (Bun runtime)
+export NODE_EXTRA_CA_CERTS="$HOME/.claude/certs/cato-root-ca.pem"
+
+# Machine-local secrets and environment variables (not in git)
+[[ -f ~/.zshrc.secrets ]] && source ~/.zshrc.secrets
