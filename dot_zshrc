@@ -91,6 +91,8 @@ elif [[ $commands[kubectl] ]]; then
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
+# For VSCode
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -102,3 +104,27 @@ export NODE_EXTRA_CA_CERTS="$HOME/.claude/certs/cato-root-ca.pem"
 
 # Machine-local secrets and environment variables (not in git)
 [[ -f ~/.zshrc.secrets ]] && source ~/.zshrc.secrets
+
+# zsh-completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  autoload -Uz compinit
+  compinit
+fi
+
+# fzf-tab
+source /usr/local/share/fzf-tab/fzf-tab.zsh
+
+# zsh-autosuggestions
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zsh-syntax-highlighting (must be last)
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zsh-history-substring-search (must be after syntax-highlighting)
+source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# fzf shell integration
+source <(fzf --zsh)
