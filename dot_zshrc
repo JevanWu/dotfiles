@@ -14,7 +14,6 @@ fi
 eval "$(starship init zsh)"
 
 # Aliases
-alias gst="git status"
 alias work="cd $HOME/Documents/java_projects/leapxpert"
 alias ruby_projects="cd $HOME/Documents/ruby_projects/"
 alias java_projects="cd $HOME/Documents/java_projects/"
@@ -112,6 +111,7 @@ if type brew &>/dev/null; then
   compinit
 fi
 
+export HOMEBREW_PREFIX="/usr/local"
 # fzf-tab
 source /usr/local/share/fzf-tab/fzf-tab.zsh
 
@@ -128,3 +128,5 @@ bindkey '^[[B' history-substring-search-down
 
 # fzf shell integration
 source <(fzf --zsh)
+
+[ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh ] && source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh
