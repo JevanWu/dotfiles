@@ -5,6 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+eval "$(zoxide init zsh)"
+
 # rbenv
 if [ -d "$HOME/.rbenv" ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
@@ -14,6 +16,7 @@ fi
 eval "$(starship init zsh)"
 
 # Aliases
+alias gst="git status"
 alias work="cd $HOME/Documents/java_projects/leapxpert"
 alias ruby_projects="cd $HOME/Documents/ruby_projects/"
 alias java_projects="cd $HOME/Documents/java_projects/"
@@ -79,6 +82,8 @@ fi
 
 # AKS helper functions
 [[ -f ~/.zsh/aks_helper.zsh ]] && source ~/.zsh/aks_helper.zsh
+[[ -f ~/.zsh/mongo_connect.zsh ]] && source ~/.zsh/mongo_connect.zsh
+[[ -f ~/.zsh/pg_connect.zsh ]] && source ~/.zsh/pg_connect.zsh
 
 # kubectl completion (cached for faster startup)
 if [[ -f ~/.zsh/kubectl_completion.zsh ]]; then

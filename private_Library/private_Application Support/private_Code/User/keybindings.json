@@ -64,5 +64,15 @@
         "key": "ctrl+y",
         "command": "editor.action.clipboardCopyAction",
         "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+    },
+    {
+        "key": "gi",
+        "command": "editor.action.goToImplementation",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+    },
+    {
+        "key": "gs",
+        "command": "java.action.openSuperImplementation",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
     }
 ]
