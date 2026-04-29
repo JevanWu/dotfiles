@@ -6,8 +6,8 @@ Personal dotfiles managed with [chezmoi](https://www.chezmoi.io). Covers zsh, Vi
 
 ### zsh (`~/.zshrc`)
 
-- [Oh-My-Zsh](https://ohmyz.sh) with [Powerlevel10k](https://github.com/romkatv/powerlevel10k) theme
-- Plugins: `git`, `zsh-autosuggestions`, `zsh-syntax-highlighting`
+- [Starship](https://starship.rs) prompt
+- Plugins: `zsh-autosuggestions`, `zsh-syntax-highlighting`, `zsh-history-substring-search`, `fzf-tab`, `forgit`
 - Runtime managers: rbenv, NVM (lazy-loaded), GVM, SDKMAN, Bun
 - kubectl completion (cached for faster startup)
 - Google Cloud SDK integration
@@ -41,13 +41,39 @@ Custom keyboard shortcuts for VS Code on macOS.
 
 ## Installation
 
-1. [Install chezmoi](https://www.chezmoi.io/install/)
-2. Apply the dotfiles:
+1. [Install Homebrew](https://brew.sh) (if not already installed)
+2. [Install chezmoi](https://www.chezmoi.io/install/)
+3. Apply the dotfiles:
 
 ```sh
 chezmoi init https://github.com/jevanwu/dotfiles.git
 chezmoi apply
 ```
+
+4. Run the bootstrap script to install all required tools and zsh plugins:
+
+```sh
+~/.local/share/chezmoi/install.sh
+```
+
+5. Open a new shell (or run `exec zsh`) to load everything.
+
+### What `install.sh` installs
+
+| Tool | Purpose |
+|------|---------|
+| [starship](https://starship.rs) | Shell prompt |
+| [bat](https://github.com/sharkdp/bat) | `cat` with syntax highlighting |
+| [fzf](https://github.com/junegunn/fzf) | Fuzzy finder |
+| [tldr](https://tldr.sh) | Simplified man pages |
+| [lazygit](https://github.com/jesseduffield/lazygit) | Terminal UI for git |
+| [zoxide](https://github.com/ajeetdsouza/zoxide) | Smarter `cd` |
+| [forgit](https://github.com/wfxr/forgit) | Interactive git commands via fzf |
+| [zsh-completions](https://github.com/zsh-users/zsh-completions) | Extra zsh completions |
+| [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) | Fish-style suggestions |
+| [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) | Command syntax highlighting |
+| [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search) | History search with arrow keys |
+| [fzf-tab](https://github.com/Aloxaf/fzf-tab) | fzf-powered tab completion |
 
 ### Machine-local secrets
 
@@ -55,14 +81,10 @@ Sensitive environment variables (API keys, tokens, etc.) go in `~/.zshrc.secrets
 
 ## Optional prerequisites
 
-Each config section works independently. Install only what you need:
+Install these manually as needed:
 
 | Tool | Used by |
 |------|---------|
-| [Oh-My-Zsh](https://ohmyz.sh) | zsh |
-| [Powerlevel10k](https://github.com/romkatv/powerlevel10k) | zsh |
-| [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) | zsh |
-| [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) | zsh |
 | [rbenv](https://github.com/rbenv/rbenv) | zsh (Ruby) |
 | [NVM](https://github.com/nvm-sh/nvm) | zsh (Node.js) |
 | [GVM](https://github.com/moovweb/gvm) | zsh (Go) |
